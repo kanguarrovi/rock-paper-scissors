@@ -8,66 +8,82 @@ __copyright__   = "Copyleft 2017, Heredia, Costa Rica"
 import os
 from random import randint
 
-#Poll options
-ROCK_PAPER_SCISSORS_POLL = { 1: 'rock', 2 : 'paper', 3 : 'scissors'}
+class RockPaperScissors:
 
-def print_option(player, computer):
-    print("Player:", ROCK_PAPER_SCISSORS_POLL[player])
-    print("Computer:", ROCK_PAPER_SCISSORS_POLL[computer])
- 
-def rock_paper_scissors(player, computer):
+    OPTIONS_POLL = { 1: 'rock', 2 : 'paper', 3 : 'scissors'}
 
-    #Scores
-    global wins
-    global losts
-    global draws
     wins = 0
     losts = 0
     draws = 0
 
-    if player == 1 and computer == 3:
-        wins+=1
-        return "You win!"
-    elif player == 1 and computer == 2:
-        losts+=1
-        return "Computer wins!"
-    elif player == 2 and computer == 1:
-        wins+=1
-        return "You win!"
-    elif player == 2 and computer == 3:
-        losts+=1
-        return "Computer wins!"
-    elif player == 3 and computer == 1:
-        losts+=1
-        return "Computer wins!"
-    elif player == 3 and computer == 2:
-        wins+=1
-        return "You win!"
-    else:
-        draws+=1
-        return "Draw"
-
-def show_scores():
-    print("")
-    print("Scores:", "wins:", wins,", losts:", losts, ", draws:", draws)
-
-def main():
     exit = 0
-    print("Welcome to a very simple Rock-paper-scissors python console game!")
-    print("You will play againt the computer ")
-    while exit == 0:
+
+    def show_scores(self):
+        print("")
+        print("Scores:", "wins:", RockPaperScissors.wins,", losts:", RockPaperScissors.losts, ", draws:", RockPaperScissors.draws)
+
+    def show_header(self):
+        print("Welcome to a very simple Rock-paper-scissors python console game!")
+        print("You will play againt the computer ")
+
+    def options(self):
+        print("/********************************/")
         print("Options:")
         print("1. Rock")
         print("2. Paper")
         print("3. Scissors")
-        player = int(input("Enter a option:"))
-        computer = randint(1, 3)
-        print_option(player, computer)
-        print(rock_paper_scissors(player, computer))
-        show_scores()
-        #os.system('cls' if os.name == 'nt' else 'clear')
 
-main()
+    def game(self, player, computer):
+
+        print("Player:", RockPaperScissors.OPTIONS_POLL[player])
+        print("Computer:", RockPaperScissors.OPTIONS_POLL[computer])
+
+        if player == 1 and computer == 3:
+            RockPaperScissors.wins += 1
+            print ("You win!")
+        elif player == 1 and computer == 2:
+            RockPaperScissors.losts += 1
+            print ("Computer wins!")
+        elif player == 2 and computer == 1:
+            RockPaperScissors.wins += 1
+            print ("You win!")
+        elif player == 2 and computer == 3:
+            RockPaperScissors.losts += 1
+            print ("Computer wins!")
+        elif player == 3 and computer == 1:
+            RockPaperScissors.losts += 1
+            print ("Computer wins!")
+        elif player == 3 and computer == 2:
+            RockPaperScissors.wins += 1
+            print ("You win!")
+        else:
+            RockPaperScissors.draws += 1
+            print ("Draw")
+
+    def __init__(self):
+        self.show_header()
+        while RockPaperScissors.exit == 0:
+
+            try:
+                self.options()
+                player = int(input("Enter a option:"))
+
+                if player > 0 and player < 4:
+                    computer = randint(1, 3)
+                    self.game(player,computer)
+                    self.show_scores()
+                    #os.system('cls' if os.name == 'nt' else 'clear')
+                else:
+                    print ("That was no valid option. Try again...")
+
+            except ValueError:
+                print ("That was no valid option. Try again...")
+                print ("")
+            
+    pass 
+
+if __name__ == "__main__":
+    game = RockPaperScissors()
     
 
 
