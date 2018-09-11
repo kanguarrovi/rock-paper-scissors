@@ -10,17 +10,18 @@ from random import randint
 
 class RockPaperScissors:
 
-    OPTIONS_POLL = { 1: 'rock', 2 : 'paper', 3 : 'scissors'}
+    OPTIONS_POLL = {1: 'rock', 2: 'paper', 3: 'scissors'}
 
-    wins = 0
-    losts = 0
-    draws = 0
-
-    exit = 0
+    def __init__(self):
+        self.wins = 0
+        self.losts = 0
+        self.draws = 0
+        self.exit = 0
+        self.start()
 
     def show_scores(self):
         print("")
-        print("Scores:", "wins:", RockPaperScissors.wins,", losts:", RockPaperScissors.losts, ", draws:", RockPaperScissors.draws)
+        print("Scores:", "wins:", self.wins,", losts:", self.losts, ", draws:", self.draws)
 
     def show_header(self):
         print("Welcome to a very simple Rock-paper-scissors python console game!")
@@ -39,30 +40,30 @@ class RockPaperScissors:
         print("Computer:", RockPaperScissors.OPTIONS_POLL[computer])
 
         if player == 1 and computer == 3:
-            RockPaperScissors.wins += 1
-            print ("You win!")
+            self.wins += 1
+            print("You win!")
         elif player == 1 and computer == 2:
-            RockPaperScissors.losts += 1
-            print ("Computer wins!")
+            self.losts += 1
+            print("Computer wins!")
         elif player == 2 and computer == 1:
-            RockPaperScissors.wins += 1
-            print ("You win!")
+            self.wins += 1
+            print("You win!")
         elif player == 2 and computer == 3:
-            RockPaperScissors.losts += 1
-            print ("Computer wins!")
+            self.losts += 1
+            print("Computer wins!")
         elif player == 3 and computer == 1:
-            RockPaperScissors.losts += 1
-            print ("Computer wins!")
+            self.losts += 1
+            print("Computer wins!")
         elif player == 3 and computer == 2:
-            RockPaperScissors.wins += 1
-            print ("You win!")
+            self.wins += 1
+            print("You win!")
         else:
-            RockPaperScissors.draws += 1
-            print ("Draw")
+            self.draws += 1
+            print("Draw")
 
-    def __init__(self):
+    def start(self):
         self.show_header()
-        while RockPaperScissors.exit == 0:
+        while self.exit == 0:
 
             try:
                 self.options()
@@ -70,17 +71,16 @@ class RockPaperScissors:
 
                 if player > 0 and player < 4:
                     computer = randint(1, 3)
-                    self.game(player,computer)
+                    self.game(player, computer)
                     self.show_scores()
-                    #os.system('cls' if os.name == 'nt' else 'clear')
+                    # os.system('cls' if os.name == 'nt' else 'clear')
                 else:
-                    print ("That was no valid option. Try again...")
+                    print("That was no valid option. Try again...")
 
             except ValueError:
-                print ("That was no valid option. Try again...")
-                print ("")
-            
-    pass 
+                print("That was no valid option. Try again...")
+                print("")
+
 
 if __name__ == "__main__":
     game = RockPaperScissors()
