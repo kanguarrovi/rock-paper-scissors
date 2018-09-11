@@ -2,8 +2,8 @@
 
 """rps.py: A very simple Rock-paper-scissors python console game."""
 
-__author__      = "Carlos Arroyo Villalobos a.k.a Kangu"
-__copyright__   = "Copyleft 2017, Heredia, Costa Rica"
+__author__ = "Carlos Arroyo Villalobos a.k.a Kangu"
+__copyright__ = "Copyleft 2017, Heredia, Costa Rica"
 
 import os
 from random import randint
@@ -17,17 +17,20 @@ class RockPaperScissors:
         self.losts = 0
         self.draws = 0
         self.exit = 0
+        # Method of the game
         self.start()
 
     def show_scores(self):
         print("")
-        print("Scores:", "wins:", self.wins,", losts:", self.losts, ", draws:", self.draws)
+        print("Scores: wins:{0}, losts:{1}, draws:{2}.".format(self.wins, self.losts, self.draws))
 
-    def show_header(self):
+    @staticmethod
+    def show_header():
         print("Welcome to a very simple Rock-paper-scissors python console game!")
-        print("You will play againt the computer ")
+        print("You will play against the computer ")
 
-    def options(self):
+    @staticmethod
+    def options():
         print("/********************************/")
         print("Options:")
         print("1. Rock")
