@@ -6,6 +6,8 @@ I did this game because I forgot how to use github and I needed practice.
 
 Execute this program with "python3 rps.py" in the archive's location.
 
-You will play against the computer any time you want. 
+You will play against the computer any times you want. 
 
-To stop the program, press ctrl+c.
+To exit the game type 'e', 'ex' or 'exit'.
+
+To stop the program, you can press ctrl+c.
